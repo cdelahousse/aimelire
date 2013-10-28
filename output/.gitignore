@@ -1,0 +1,3 @@
+#Allow empty directory
+*
+!.gitignore
