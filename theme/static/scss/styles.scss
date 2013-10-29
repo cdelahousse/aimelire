@@ -1,0 +1,241 @@
+/*
+ * Conventions:
+ *
+ * Padding bottom for content elements (paragraphs, images, etc.) -- ie. Children
+ * Padding sides: 1em, meaning a 2em gutter in middle
+ * Padding bottom: 1.5em fro structural elements to avoid margin collaspe
+ * MARGIN bottom for content elements 
+ * Full body width is 48em
+ */
+
+$primaryColour: #6c76cF;
+$bgColour: #fff;
+$primaryFontFamily: MuseoSans500, "Helvetica Neue", Helvetica, Arial, 'sans-serif';
+$textFontFamily: 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'serif';
+
+@mixin pushSiblingDown {
+  padding-bottom:1.5em;
+}
+
+/*== STRUCTURAL ==*/
+
+html {
+  height: 100%;
+	background: #fff;
+}
+body {
+	min-height: 100%;
+	position: relative;
+	font-size:18px;
+}
+#header-and-content {
+	padding-top: 2em;
+	width: 48em;
+	margin: 0 auto;	
+}
+#masthead {
+	padding: 0 13em 0 0; /* 12em + 1em (Margin)*/
+	text-align: right;
+
+  > h1 {
+    padding: 0;
+    margin: 0;
+    display: inline;
+  }
+}
+
+#sidebar {
+	float: right;
+	width: 10em;  /* +1em+1em = 12em*/
+	padding: 1.5em 1em 0;  /*Like #content*/ 
+
+	>div, >#navigation {
+    @include pushSiblingDown;
+  }
+  p {
+    margin:0;
+  }
+  > .ad {
+    height: 8em;
+  }
+}
+
+#content {
+  padding: 1.5em 1em;
+	padding-bottom: 8em; /*For sticky footer */
+
+  #content-header {
+    // Actual width: 36em;
+    width: 34em;
+
+    >.person-name, >#person-description {
+      float: left;
+      clear: both;
+      margin:0;
+
+      > p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    time, .links {
+      float: right;
+      clear: right;
+    }
+  }
+
+  .question-and-answer {
+    >h4, p {
+      margin: 0;
+    }
+    @include pushSiblingDown;
+  }
+}
+
+footer {
+  /*Sticky footer*/ 
+	width: 100%;
+	padding: 1em 0;
+	clear:both;
+	bottom:0; 
+	position: absolute;
+}
+#footer-content {
+	width: 35em;  /*just a bit wider than the content and body*/ 
+	margin: 0 auto;
+	padding: 0 13em 0 0 ;
+}
+
+/*====================*/
+/* Aesthetic Stylings */
+/*====================*/
+
+body {
+  font-size:18px;
+}
+body, select, input, textarea, h3, h4, h5, h6 {
+  font-family: $textFontFamily;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+}
+/*== HEADER ==*/
+#masthead {
+  font-family: $primaryFontFamily;
+
+  > h1 {
+    font-size: 1.6em;
+    line-height: 1;
+
+    > .person-name {
+      color:$primaryColour;
+    }
+  }
+
+  a, a:active, a:visited {
+    text-decoration:none;
+    color:#aaa;
+  }
+
+  a:hover { color: $primaryColour; }
+}
+
+/*== Sidebar Area ==*/
+#navigation {
+  a, a:active, a:visited {
+    color: #aaa; 
+    text-decoration: none;
+    font-size: 1.4em;
+    font-family: $primaryFontFamily;
+    text-transform: lowercase;
+
+    line-height: 1;  /*So that the nav bar lines up with the content*/
+    padding-bottom: .2em;
+    display: block;
+  }
+
+  a:hover { 
+    color: $primaryColour;
+  }
+}
+
+#about-site {
+  p:first-line {
+    line-height: 1.1;
+    color: $primaryColour;
+    font-family: $primaryFontFamily;
+  }
+
+  p {
+    color: #888;
+    font-size: .9em;
+    line-height: 1.3;
+  }
+}
+
+#sidebar > .ad {
+  border: 1px solid $primaryColour;
+  padding: 1em;
+  color: $primaryColour;
+  text-align: center;
+}
+
+
+/*== Content Area ==*/
+#content-header {
+
+}
+
+#person-image {
+	max-width:100%; /*Fluid images*/ 
+	padding-bottom: .5em;
+}
+
+#content-header {
+  /* Gray wrapper */
+  overflow: hidden;
+	background-color: #efefef;
+	margin: -.5em -.5em 1.5em;
+	padding: .5em;
+
+	line-height: 1.2;
+  .person-name {
+    font-size: 1.225em;
+    font-family: $primaryFontFamily;
+    color: $primaryColour;
+    padding-bottom: .2em;
+  }
+
+  h3, time {
+    color: #888;;
+  }
+
+}
+
+.question-and-answer {
+  font-size: 1.2em;
+  line-height: 1.5;
+
+  .question {
+    font-size: 1.1em;
+    color: $primaryColour;
+    font-family: $primaryFontFamily;
+    padding-bottom: .5em;
+  }
+  .answer p {
+    text-indent: 1.8em;
+  }
+}
+
+footer {
+	background-color: #eee;
+	border-top: 2px solid #888;
+}
+
+#footer-content .message {
+
+  font-style: italic;
+  display: block;
+}
+

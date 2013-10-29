@@ -6,6 +6,9 @@ BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
 
+INPUTSASS=theme/static/scss/main.scss
+OUTPUTCSS=theme/static/css/main.css
+
 CONFFILE=$(BASEDIR)/pelican/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/pelican/publishconf.py
 DEVSERVER=$(BASEDIR)/pelican/develop_server.sh
@@ -24,6 +27,7 @@ help:
 	@echo '   make html                        (re)generate the web site          '
 	@echo '   make clean                       remove the generated files         '
 	@echo '   make regenerate                  regenerate files upon modification '
+	@echo '   make sass			   compile sass files		      '
 	@echo '   make publish                     generate using production settings '
 	@echo '   make serve [PORT=8000]           serve site at http://localhost:8000'
 	@echo '   make devserver [PORT=8000]       start/restart develop_server.sh    '
@@ -40,8 +44,11 @@ html:
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 
+sass:
+	sass --sourcemap --watch $(INPUTSASS):$(OUTPUTCSS)
+
 regenerate:
-	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
+	$(PELICAN) -v -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 serve:
 ifdef PORT
