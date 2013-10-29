@@ -1,0 +1,23 @@
+<!doctype html>  
+
+<html lang="en">
+<head> 
+  <meta charset="utf-8"> 
+  <title>{% block title %}{{ SITENAME }}{% endblock %}</title> 
+  <link rel="stylesheet" href="{{ CSS_FILE }}" type="text/css" />
+</head> 
+<body>
+  {% block content %}
+    body Content
+  {% endblock %}
+<footer>
+  <div id="footer-content">
+    Copyright &copy;  <a href="http://delahousse.ca">Christian Delahousse</a>.
+    <span class="message">Some really nice message about stuff. Blah Blah Blah.
+      Fusce posuere pretium felis, nec varius nulla dictum vel. Fusce mattis diam
+      ipsum, nec mollis d </span> 
+  </div>
+</footer>
+</body>
+</html>
+

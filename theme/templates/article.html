@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{%block content %}
+<div id="header-and-content">
+  <header id="masthead">
+    <h1><span class="person-name">{{ article.name }}</span> <a href="/" alt="The Reading List">reads this.</a></h1>
+  </header>
+  {% include "sidebar.html" %}
+  <article id="content">
+      <div id="content-header">
+        <img
+        src="http://farm2.static.flickr.com/1394/1361277704_4e3f622421_b.jpg" id="person-image" alt="">
+        <h2 class='person-name'>{{ article.name }}</h2>
+        <time datetime="{{ article.date|strftime('%Y-%m-%d') }}">{{ article.date|strftime('%d %B %Y') }}</time>
+        <h3 id="person-description">{{ article.summary }}</h3>
+        <span class="links">
+          {% if article.twitter is defined %}
+          <a href="http://twitter.com/{{ article.twitter }}">@{{ article.twitter }}</a> 
+          {% endif %}
+
+          {% if article.siteurl is defined %}
+          <a href="{{ article.siteurl }}">Site</a> 
+          {% endif %}
+
+          {% if article.blog is defined %}
+          <a href="{{ article.blog}}">Blog</a>
+          {% endif %}
+        </span>
+      </div >
+      <div id="interview">
+        {{ article.content }}
+      </div>
+    </article>
+</div>
+{% endblock %}
