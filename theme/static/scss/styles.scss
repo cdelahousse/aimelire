@@ -85,8 +85,8 @@ body {
     }
   }
 
-  .question-and-answer {
-    >h4, p {
+  #interview {
+    h4, p {
       margin: 0;
     }
     @include pushSiblingDown;
@@ -196,7 +196,7 @@ h1, h2, h3, h4, h5 {
   /* Gray wrapper */
   overflow: hidden;
 	background-color: #efefef;
-	margin: -.5em -.5em 1.5em;
+	margin: -.5em -.5em 0;
 	padding: .5em;
 
 	line-height: 1.2;
@@ -213,17 +213,17 @@ h1, h2, h3, h4, h5 {
 
 }
 
-.question-and-answer {
+#interview {
   font-size: 1.2em;
   line-height: 1.5;
 
-  .question {
+  h4 { /* question */
     font-size: 1.1em;
     color: $primaryColour;
     font-family: $primaryFontFamily;
-    padding-bottom: .5em;
+    padding: 1em 0 .5em
   }
-  .answer p {
+  p { /* answer */
     text-indent: 1.8em;
   }
 }
