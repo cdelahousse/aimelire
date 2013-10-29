@@ -1,2 +1,5 @@
 *.pid
 *.pyc
+.sass-cache
+theme/static/css/
+output
